@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_ir_actions_act_window_dynatree_tree" model="ir.ui.view">
+            <field name="name">ir.actions.act_window.dynatree.tree</field>
+            <field name="model">ir.actions.act_window.dynatree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Dynatrees setting">
+                    <field name="action_id" invisible="1"/>
+                    <field name="eval_name" invisible="1"/>
+                    <field name="name"/>
+                    <field name="model_id"/>
+                    <field name="child_field_id"/>
+                    <field name="checkbox_field_id"/>
+                    <field name="type"/>
+                    <field name="search_field"/>
+                    <field name="search_operator" invisible="1"/>
+                    <field name="selectmode"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_ir_actions_act_window_dynatree_form" model="ir.ui.view">
+            <field name="name">ir.actions.act_window.dynatree.form</field>
+            <field name="model">ir.actions.act_window.dynatree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Dynatree setting" version="7.0">
+                    <label for="action_id"/>
+                    <field name="action_id"/>
+                    <group string="Name setting">
+                        <field name="name"/>
+                        <field name="eval_name"/>
+                    </group>
+                    <group string="Model setting">
+                        <field name="model_id"/>
+                        <field name="child_field_id"/>
+                        <field name="checkbox_field_id"/>
+                    </group>
+                    <group string="Display setting">
+                        <field name="init_domain"/>
+                        <field name="selectmode"/>
+                        <field name="context"/>
+                        <field name="default_id"/>
+                    </group>
+                    <group string="Domain/Context setting">
+                        <field name="type"/>
+                        <field name="search_field"/>
+                        <field name="search_operator"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="view_ir_actions_act_window_dynatree_search" model="ir.ui.view">
+            <field name="name">ir.actions.act_window.dynatree.search</field>
+            <field name="model">ir.actions.act_window.dynatree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="action_id"/>
+                    <field name="name"/>
+                    <field name="eval_name"/>
+                    <field name="model_id"/>
+                    <field name="search_field"/>
+                    <field name="search_operator"/>
+                    <field name="child_field_id"/>
+                    <field name="checkbox_field_id"/>
+                    <field name="selectmode"/>
+                    <field name="type"/>
+                    <group string="Filter by ...">
+                        <filter string="Name is evaluated" domain="[('eval_name', '=', True)]"/>
+                        <filter string="Name is not evaluated" domain="[('eval_name', '=', False)]"/>
+                        <filter string="Type: domain" domain="[('type', '=', 'domain')]"/>
+                        <filter string="Type: context" domain="[('type', '=', 'context')]"/>
+                        <filter string="Operator: IN" domain="[('search_operator', '=', 'in')]"/>
+                        <filter string="Operator: Child of" domain="[('search_operator', '=', 'child_of')]"/>
+                        <filter string="Have child field" domain="[('child_field_id', '!=', False)]"/>
+                        <filter string="Have not child field" domain="[('child_field_id', '=', False)]"/>
+                        <filter string="Have checkbox field" domain="[('checkbox_field_id', '!=', False)]"/>
+                        <filter string="Have not checkbox field" domain="[('checkbox_field_id', '=', False)]"/>
+                        <filter string="SelectMode: Single" domain="[('selectmode', '=', 'single')]"/>
+                        <filter string="SelectMode: Multi" domain="[('selectmode', '=', 'multi')]"/>
+                        <filter string="SelectMode: Multi Hier" domain="[('selectmode', '=', 'multi-hier')]"/>
+                    </group>
+                    <group string="Group by ...">
+                        <filter string="Evaluate / not evaluate" context="{'group_by': 'eval_name'}"/>
+                        <filter string="Ir actions act_window" context="{'group_by': 'action_id'}"/>
+                        <filter string="Model" context="{'group_by': 'model_id'}"/>
+                        <filter string="Type" context="{'group_by': 'type'}"/>
+                        <filter string="Operator" context="{'group_by': 'search_operator'}"/>
+                        <filter string="SelectMode" context="{'group_by': 'selectmode'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="act_open_ir_actions_act_window_dynatree_view">
+            <field name="name">Dynatrees setting</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ir.actions.act_window.dynatree</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_ir_actions_act_window_dynatree_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ir_actions_act_window_dynatree_view_form">
+            <field name="act_window_id" ref="act_open_ir_actions_act_window_dynatree_view"/>
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_ir_actions_act_window_dynatree_form"/>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_ir_actions_act_window_dynatree_view_tree">
+            <field name="act_window_id" ref="act_open_ir_actions_act_window_dynatree_view"/>
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_ir_actions_act_window_dynatree_tree"/>
+        </record>
+        <menuitem id="menu_ir_actions_act_window_dynatree"
+            parent="base.next_id_2"
+            sequence="20"
+            action="act_open_ir_actions_act_window_dynatree_view"/>
+
+        <record id="view_ir_actions_act_window_form" model="ir.ui.view">
+            <field name="name">ir.actions.act_window.form</field>
+            <field name="model">ir.actions.act_window</field>
+            <field name="inherit_id" ref="base.view_window_action_form"/>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/notebook/page/group[@string='Views']" position="after">
+                    <group string="Dynatree settings">
+                        <field name="has_search_view"/>
+                        <field name="dynatree_setting_ids" colspan="4" nolabel="1" 
+                            context="{'default_action_id': active_id}"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,66 @@
+.openerp .oe_application a.oe_dynatree_without_checkbox{
+    color: #7C7BAD;
+    margin-left: 39px;
+    position: absolute;
+    bottom: 0.15em;
+    color: black;
+}
+div.oe_dynatree {
+    position: absolute;
+    top: 0;
+    background: #FFF;
+}
+div.oe_dynatree_wrapper {
+    overflow: visible;
+    z-index: 100;
+}
+.openerp .oe_form_field_many2one span.oe_m2o_drop_down_button.oe_dynatree {
+    display: none;
+}
+a.oe_m2o_cm_button.oe_e.oe_dynatree {
+    display: none;
+}
+.openerp .oe_form .oe_form_field_with_button input.oe_dynatree {
+    margin-left: 8%;
+    width: 92%;
+}
+ul.dynatree-container {
+    margin: 2px;
+    padding: 0;
+    border: none;
+    padding-bottom: 1px;
+    background: none;
+}
+ul.dynatree-container li ul {
+    background: white;
+    margin-top: 3px;
+    border-left: solid 1px #DDD;
+}
+span.dynatree-icon {
+    display: none;
+}
+label.oe_dynatree_label {
+    padding: 5px;
+    text-decoration:underline;
+}
+div.oe_dynatree_label {
+    text-align: center;
+    width: inherit;
+}
+div.oe_dynatree.oe_tree_dynatree{
+  position: static;
+}
+th.treeview-header.oe_treeview-multiheader-group {
+    text-align: center;
+    font-size: 13px;
+    line-height: 1px;
+}
+th.treeview-header.oe_treeview-multiheader-field {
+    font-size: 13px;
+    line-height: 1px;
+}
+
+.openerp .oe_view_manager .oe_view_manager_switch .oe_vm_switch_tree_dynatree:after {
+  padding: 2px;
+  content: "j";
+}

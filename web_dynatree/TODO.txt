@@ -1,0 +1,12 @@
+Acknowledged room for improvements
+----------------------------------
+
+- Add m2o_dynatree widget for tree view
+
+- Add m2m_dynatree widget form form/tree view (in progress)
+
+- Controller unittest
+
+- Javascript unittest
+
+- OpenERP Model unittest
